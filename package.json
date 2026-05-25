@@ -2,7 +2,7 @@
   "name": "ocr-for-all",
   "displayName": "OCR for ALL: AI Image to Text, PDF, LaTeX Math, Table & Invoice Parser",
   "description": "Ultra-high accuracy AI OCR. Convert images, screenshots, scans, handwritten notes, LaTeX math formulas, tables, and PDFs to clean Markdown, LaTeX, or JSON directly in VSCode using Gemini, Claude & GPT-4o.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "ocr-for-all",
   "repository": {
     "type": "git",
