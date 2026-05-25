@@ -4,10 +4,7 @@ import * as fs from "fs";
 import { OcrServer } from "./server";
 import { OcrSidebarProvider } from "./sidebar";
 import { 
-  tryExtractWithGemini, 
-  tryExtractWithClaude, 
-  tryExtractWithOpenAI, 
-  processAndValidateOcrResult,
+  runEnhancedOcr,
   EXTRACTION_PROMPTS
 } from "./ocrEngine";
 
@@ -146,49 +143,25 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         sidebarProvider?.log(`Sending extraction request to ${provider}...`, "info");
-        progress.report({ message: `Calling ${provider} Vision API...` });
-
-        let extractedText = "";
-        let parsedData: any = null;
-
-        if (provider === "Gemini") {
-          const res = await tryExtractWithGemini(fileBase64, mimeType, dynamicPrompt, apiKey, apiModel);
-          extractedText = res.rawText;
-          parsedData = res.parsed;
-        } else if (provider === "Claude 3.5 Sonnet") {
-          const res = await tryExtractWithClaude(fileBase64, mimeType, dynamicPrompt, apiKey, apiModel);
-          extractedText = res.rawText;
-          parsedData = res.parsed;
-        } else if (provider === "OpenAI GPT-4o") {
-          if (mimeType === "application/pdf") {
-            throw new Error("OpenAI provider does not support PDF vision directly. Please convert to images or use Gemini/Claude.");
+        
+        let extractedText = await runEnhancedOcr(
+          fileBase64,
+          mimeType,
+          dynamicPrompt,
+          provider,
+          apiKey,
+          apiModel,
+          ocrMode,
+          apiEndpoint,
+          (msg, type) => {
+            progress.report({ message: msg });
+            sidebarProvider?.log(msg, type);
           }
-          const res = await tryExtractWithOpenAI(fileBase64, mimeType, dynamicPrompt, apiKey, apiModel);
-          extractedText = res.rawText;
-          parsedData = res.parsed;
-        } else {
-          // Custom OpenAI
-          const res = await tryExtractWithOpenAI(fileBase64, mimeType, dynamicPrompt, apiKey, apiModel, apiEndpoint);
-          extractedText = res.rawText;
-          parsedData = res.parsed;
-        }
-
-        // Parse structured GST math if INVOICE_JSON mode
-        if (ocrMode === "INVOICE_JSON" && parsedData) {
-          try {
-            progress.report({ message: "Running mathematical validations..." });
-            parsedData = processAndValidateOcrResult(parsedData);
-            extractedText = JSON.stringify(parsedData, null, 2);
-          } catch (mathErr: any) {
-            sidebarProvider?.log(`GST validation engine warning: ${mathErr.message}`, "info");
-          }
-        }
-
-        sidebarProvider?.log("OCR extraction completed successfully!", "success");
+        );
 
         let insertionText = extractedText;
-        if (parsedData && typeof parsedData === "object" && ocrMode === "INVOICE_JSON") {
-          insertionText = "```json\n" + JSON.stringify(parsedData, null, 2) + "\n```";
+        if (ocrMode === "INVOICE_JSON" && !extractedText.startsWith("```json")) {
+          insertionText = "```json\n" + extractedText + "\n```";
         }
 
         insertTextAtCursor(insertionText);

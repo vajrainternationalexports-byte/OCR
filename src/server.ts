@@ -4,11 +4,7 @@ import * as os from "os";
 import { Server } from "http";
 import { Bonjour } from "bonjour-service";
 import { 
-  tryExtractWithGemini, 
-  tryExtractWithClaude, 
-  tryExtractWithOpenAI, 
-  tryExtractTextWithOpenAI,
-  processAndValidateOcrResult,
+  runEnhancedOcr,
   EXTRACTION_PROMPTS
 } from "./ocrEngine";
 
@@ -126,51 +122,21 @@ export class OcrServer {
 
         this.callbacks.onLog(`Processing OCR using ${config.provider} (Mode: ${mode})...`, "info");
 
-        let extractedText = "";
-        let parsedData: any = null;
+        let extractedText = await runEnhancedOcr(
+          fileBase64,
+          mimeType,
+          dynamicPrompt,
+          config.provider,
+          config.apiKey,
+          config.apiModel,
+          mode,
+          config.apiEndpoint,
+          (msg, type) => this.callbacks.onLog(msg, type)
+        );
 
-        // Perform extraction based on provider
-        if (config.provider === "Gemini") {
-          const resOcr = await tryExtractWithGemini(fileBase64, mimeType, dynamicPrompt, config.apiKey, config.apiModel);
-          extractedText = resOcr.rawText;
-          parsedData = resOcr.parsed;
-        } else if (config.provider === "Claude 3.5 Sonnet") {
-          const resOcr = await tryExtractWithClaude(fileBase64, mimeType, dynamicPrompt, config.apiKey, config.apiModel);
-          extractedText = resOcr.rawText;
-          parsedData = resOcr.parsed;
-        } else if (config.provider === "OpenAI GPT-4o") {
-          if (mimeType === "application/pdf") {
-            // Simulated PDF processing fallback if no direct vision pdf support
-            this.callbacks.onLog("PDF input received for OpenAI. Raw text extract fallback not supported natively in this server, using standard image processing rules.", "error");
-            throw new Error("OpenAI provider does not support PDF vision directly. Please convert to images or use Gemini/Claude.");
-          }
-          const resOcr = await tryExtractWithOpenAI(fileBase64, mimeType, dynamicPrompt, config.apiKey, config.apiModel);
-          extractedText = resOcr.rawText;
-          parsedData = resOcr.parsed;
-        } else {
-          // Custom OpenAI endpoint
-          const resOcr = await tryExtractWithOpenAI(fileBase64, mimeType, dynamicPrompt, config.apiKey, config.apiModel, config.apiEndpoint);
-          extractedText = resOcr.rawText;
-          parsedData = resOcr.parsed;
-        }
-
-        // Apply GST/Math corrections if Invoice JSON mode was specified
-        if (mode === "INVOICE_JSON" && parsedData) {
-          try {
-            parsedData = processAndValidateOcrResult(parsedData);
-            extractedText = JSON.stringify(parsedData, null, 2);
-          } catch (mathErr: any) {
-            this.callbacks.onLog(`GST validation engine warning: ${mathErr.message}`, "info");
-          }
-        }
-
-        this.callbacks.onLog("OCR extractions completed successfully!", "success");
-
-        // Format to insert in editor
         let insertionText = extractedText;
-        if (parsedData && typeof parsedData === "object" && mode === "INVOICE_JSON") {
-          // If JSON, let's pretty print as markdown table / raw JSON based on format preference
-          insertionText = "```json\n" + JSON.stringify(parsedData, null, 2) + "\n```";
+        if (mode === "INVOICE_JSON" && !extractedText.startsWith("```json")) {
+          insertionText = "```json\n" + extractedText + "\n```";
         }
 
         // Insert text into editor
