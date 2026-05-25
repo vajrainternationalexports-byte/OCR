@@ -1,83 +1,94 @@
-# OCR for ALL
+# OCR for ALL: Ultimate AI Image to Text & Document Parser
 
-> **Ultra High Enrichment OCR — Powered by Gemini · Claude · OpenAI**
+[![Open VSX](https://img.shields.io/open-vsx/v/ocr-for-all/ocr-for-all.svg?color=brightgreen&style=flat-square)](https://open-vsx.org/extension/ocr-for-all/ocr-for-all)
+[![Downloads](https://img.shields.io/open-vsx/dt/ocr-for-all/ocr-for-all.svg?color=orange&style=flat-square)](https://open-vsx.org/extension/ocr-for-all/ocr-for-all)
+[![License](https://img.shields.io/github/license/vajrainternationalexports-byte/OCR.svg?color=blue&style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blueviolet.svg?style=flat-square)](https://github.com/vajrainternationalexports-byte/OCR)
 
-**OCR for ALL** is a VSCode extension that turns *any* visual document into clean, structured text — directly inside your editor.
-
----
-
-## 🚀 What It Does
-
-| Input | Output |
-|---|---|
-| 🖼️ **Image to Text** | Any photo, screenshot, or scanned image → clean plain text |
-| 📄 **PDF to Text** | Multi-page PDFs → structured text or Markdown |
-| ✍️ **Handwritten to Text** | Handwritten notes, forms, math equations → digital text / LaTeX |
-| 🌫️ **Blurry / Hazy Image to Text** | Low-quality, overexposed, faded, or noisy scans → enriched clean text |
-
-> 💎 **Ultra High Enrichment** — AI vision models don't just read pixels; they reason about context, correct ambiguities, validate numbers, and produce output that is *richer and more accurate* than the original document.
+> **Ultra High Enrichment AI OCR — Powered by Gemini · Claude 3.5 Sonnet · OpenAI GPT-4o**
+>
+> **OCR for ALL** is the ultimate VSCode extension that converts *any* visual document, image, or scan into clean, structured text, Markdown, LaTeX, or JSON — directly at your cursor inside your editor.
 
 ---
 
-**OCR for ALL** integrates advanced vision models (Gemini, Claude, OpenAI, and custom OpenAI-compatible endpoints) to help you convert handwritten notes, math equations, tables, blurry scans, and structured documents (invoices, receipts, POs) directly into your editor, all while maintaining active document context to achieve 150%+ accuracy.
+## 🚀 Why OCR for ALL? (The AI Advantage)
 
-It is designed to run completely standalone inside VSCode, or as a local network proxy server so external OCR clients (iPad, Android tablets, mobile apps, scanner rigs) can send images over the local network and have text auto-inserted right at your active cursor.
+Traditional OCR engines (like Tesseract) simply map pixels to characters, resulting in broken lines, spelling mistakes, and messy formatting. 
 
----
-
-## ✨ Features
-
-### 🖼️ AI-Powered OCR Engine
-* **Multiple OCR Modes**: Supports standard text extraction, clean Markdown restructuring, handwritten LaTeX math, markdown tables, and structured invoice parsing.
-* **Context-Aware Translation**: The OCR results consider the surrounding context of your active document (lines before/after cursor) to resolve terms, variables, naming styles, and code structures.
-* **Self-Correction & Math Validation**: In structured JSON mode, it validates calculations, balances GST rates (Intrastate/Interstate), handles rounding offsets, and generates word equivalents.
-* **Automatic Insertion**: Extracted content is automatically inserted at your cursor position instantly.
-* **Streaming Support**: Real-time streaming completions.
-
-### 🎨 Premium Sidebar Interface
-* **Intuitive Control Panel**: Easily configure API settings, providers, and default parsing modes.
-* **Server Control**: Start and stop the local OCR proxy server with a single click.
-* **Visual Status Indicators**: Real-time server status badge (Running/Stopped) and IP/port information.
-* **Request Logger Console**: Scrolling log viewer capturing API calls, completed transcriptions, and warnings.
-
-### 🔌 Network Discovery
-* **mDNS Service Advertisement**: The proxy server automatically registers on your local network via mDNS, making it discoverable for remote mobile and tablet OCR clients.
-* **Cross-Platform**: Tested on Windows, macOS, and Linux.
+**OCR for ALL** uses advanced AI vision models (Gemini, Claude, GPT-4o) that **read, reason, and understand context**. 
+* 💎 **Ultra High Enrichment**: The AI corrects spelling ambiguities, validates mathematical calculations, formats tables properly, and writes clean Markdown.
+* 🧠 **Context-Aware OCR**: It reads the code/text surrounding your active cursor to automatically match your naming conventions, programming language, variables, and indentation style.
+* 📶 **Local Network OCR Gateway**: Runs a local server broadcasting via mDNS so you can snap a photo with your mobile or iPad and watch the transcribed text appear at your cursor in real time.
 
 ---
 
-## 🎯 Supported OCR Modes
+## ✨ Features & Core Capabilities
 
-1. **Standard Text (`STANDARD`)**: Direct high-fidelity OCR, extracting text while preserving original line breaks.
-2. **Markdown Document (`MARKDOWN`)**: Transcribes and structures text as clean, organized Markdown.
-3. **LaTeX Math (`LATEX`)**: Converts handwritten math equations, symbols, and formulas into LaTeX notation.
-4. **Table / Data Sheets (`TABLE`)**: Extracts printed tables into Github Flavored Markdown (GFM) tables.
-5. **Structured Invoices (`INVOICE_JSON`)**: Extracts bills, receipts, or invoices into structured JSON, applying algebraic checks, Indian numbering words, and GST state checks.
-6. **Auto-Detect (`AUTO_DETECT`)**: Intelligently analyzes the document type and formats output accordingly.
-
----
-
-## 📦 Installation
-
-### Install manually via VSIX:
-1. Download the packaged `.vsix` file.
-2. Open VSCode.
-3. Go to Extensions (`Ctrl+Shift+X` or `Cmd+Shift+X`).
-4. Click the `...` menu in the top right and select **Install from VSIX...**.
-5. Select the `ocr-for-all-1.0.0.vsix` file.
+| Input Type | Best OCR Mode | Output Format | Ideal Use Cases |
+| :--- | :--- | :--- | :--- |
+| 🖼️ **Screenshots & Snaps** | `STANDARD` | Raw / Clean Text | Code snippets, error logs, quick notes |
+| 📄 **Scanned Documents** | `MARKDOWN` | Structured Markdown | E-books, research papers, READMEs, articles |
+| ✍️ **Handwritten Formulas** | `LATEX` | LaTeX Math Notation | Math homework, academic papers, scientific notes |
+| 📊 **Printed Tables / Sheets** | `TABLE` | GitHub-Flavored Table | Spreadsheets, CSVs, financial ledgers |
+| 🧾 **Invoices, Bills & Receipts** | `INVOICE_JSON` | Structured/Validated JSON | Procurement, sales logs, expense tracking |
+| 🌫️ **Blurry / Low-quality Scans** | `AUTO_DETECT` | Enriched Clean Output | Faded documents, low-contrast photos, hazy scans |
 
 ---
 
-## 🚀 Getting Started
+## 🎯 Deep Dive: Supported Modes
 
-### 1. Configure Settings
-Open the **OCR for ALL** tab in the VSCode left Activity Bar to open the dashboard panel:
-* **AI Provider**: Choose between **Gemini**, **Claude 3.5 Sonnet**, **OpenAI GPT-4o**, or **Custom OpenAI-Compatible**.
-* **Model Name**: Model to use (default: `gemini-3.5-flash`).
-* **API Key**: Input your API key.
-* **Proxy Server Port**: Default is `50906`.
+### 1. Standard Text OCR (`STANDARD`)
+Extracts text with high fidelity, keeping original line breaks while eliminating scanning artifacts.
 
-You can also configure these in your VSCode `settings.json`:
+### 2. Markdown Document Structuring (`MARKDOWN`)
+Converts scanned articles, PDFs, and screenshots into clean, semantic Markdown document trees, including headers (`#`, `##`), bold text, blockquotes, and lists.
+
+### 3. Handwritten LaTeX Math OCR (`LATEX`)
+Perfect for students, researchers, and engineers. Draw or snapshot any complex algebraic formula, calculus equation, or matrix, and the extension instantly inserts the exact, compile-ready LaTeX math notation (e.g. `\int_{a}^{b} f(x) \, dx`).
+
+### 4. Image to Markdown Tables (`TABLE`)
+Strips out the borders and extracts structured tabular data from images directly into standard Markdown tables (`| Col 1 | Col 2 |`).
+
+### 5. Smart Invoice & Bill Parser (`INVOICE_JSON`)
+Specifically optimized for accounting and logistics:
+* Extracts supplier name, date, invoice numbers, line items, quantities, and GST rates.
+* **Auto-Correction Engine**: Runs algebraic checks on line items, cross-checks Intrastate vs Interstate GST rates, handles rounding offsets, and generates word equivalents of totals automatically.
+
+### 6. Auto-Detect (`AUTO_DETECT`)
+Let the AI determine the type of document automatically and format the response optimally.
+
+---
+
+## 🔌 Local Network Proxy & Discovery
+
+Transform your VSCode into an OCR terminal for your physical devices:
+* **mDNS Advertising**: The extension advertises a local service `_ocr-for-all._tcp` using multicast DNS.
+* **Mobile / Tablet Integration**: Snap images using your phone, iPad, or remote scanner rig, send them to the local server, and see the text instantly typed onto your active VSCode screen.
+* **Cross-Platform Support**: Works seamlessly on macOS, Windows, and Linux.
+
+---
+
+## 📦 Installation & Setup
+
+### Install via Open VSX Registry (Recommended)
+Search for `OCR for ALL` in your VSCode Extensions tab (`Cmd+Shift+X` or `Ctrl+Shift+X`) and click **Install**.
+
+### Install manually via VSIX
+1. Download the latest `.vsix` release from the [GitHub Releases Page](https://github.com/vajrainternationalexports-byte/OCR/releases).
+2. Open VSCode, click the three dots (`...`) in the Extensions view, and select **Install from VSIX...**.
+3. Select the downloaded `.vsix` file.
+
+---
+
+## 🚀 Getting Started in 3 Steps
+
+### 1. Configure the AI Provider
+Open the **OCR for ALL** tab in the VSCode Activity Bar (looks like an eye icon `$(eye)`).
+* Choose your provider: **Gemini**, **Claude 3.5 Sonnet**, **OpenAI GPT-4o**, or a **Custom OpenAI-Compatible** endpoint.
+* Enter your API Key.
+* *(Optional)* Customize the default OCR mode and the context radius.
+
+Alternatively, edit your global `settings.json`:
 ```json
 {
   "ocr-for-all.provider": "Gemini",
@@ -89,59 +100,57 @@ You can also configure these in your VSCode `settings.json`:
 ```
 
 ### 2. Run OCR on a Local File
-Click the **Select & Run OCR on File** button in the sidebar or run `OCR for ALL: Run OCR on File...` from the command palette. Select any image (PNG, JPG, WEBP) or PDF file. The extension will read the file, run it through the configured AI model with context, and insert it at your cursor!
+* Open the command palette (`Cmd+Shift+P` / `Ctrl+Shift+P`).
+* Select **OCR for ALL: Run OCR on File...**
+* Choose any image (PNG, JPEG, WEBP) or PDF. The extension processes the document and inserts the results at your active cursor.
 
-### 3. Connect a Remote Client (Proxy Server)
-Click the **Start OCR Server** button in the sidebar. The server will bind to port `50906` and broadcast over mDNS as `OCR for ALL VSCode @ <hostname>`.
-Connect your tablet/mobile client to this port and send vision API completion payloads. The results will stream back and auto-insert into your active file.
-
----
-
-## 🔧 Architecture
-
-```
-┌─────────────────┐
-│   OCR Client    │ (Mobile/Tablet/Web App)
-│  (Send Image)   │
-└────────┬────────┘
-         │ HTTP POST
-         │ /v1/chat/completions
-         ▼
-┌─────────────────┐
-│  OCR for ALL    │
-│  VSCode Ext     │
-│  Port: 50906    │
-└────────┬────────┘
-         │
-         ├─► mDNS Advertisement
-         │   (Service Discovery)
-         │
-         ├─► Context Extraction
-         │   (Lines around active cursor)
-         │
-         ├─► GST Math Validation
-         │   (Post-processing corrections)
-         │
-         ├─► AI Provider API Call
-         │   (Gemini, Claude, or OpenAI)
-         │
-         └─► Insert at Cursor
-             (In active document)
-```
+### 3. Start the Local Network Server
+* Click **Start OCR Server** in the sidebar panel.
+* The server will run on port `50906` and advertise itself to your local network.
+* Send standard OpenAI-format POST requests to `http://localhost:50906/v1/chat/completions` (see API spec below).
 
 ---
 
-## 🌐 API Endpoints
+## 🔧 Architecture & Flow
+
+```
+┌──────────────────────────┐
+│   Remote OCR Client      │ (iPad, iPhone, Android, Scanner)
+│   (Upload Base64 Image)  │
+└────────────┬─────────────┘
+             │ HTTP POST (Port: 50906)
+             ▼
+┌──────────────────────────┐
+│   OCR for ALL Proxy      │
+│   (Runs inside VSCode)   │
+└────────────┬─────────────┘
+             ├─► mDNS Service Discovery (Local network broadcast)
+             │
+             ├─► Active Editor Context Lookup (Grabs surrounding code)
+             │
+             ├─► GST Math & Rounding Correction (Algorithmic validation)
+             │
+             ├─► Multi-Model Vision API Call (Gemini, Claude, or OpenAI)
+             │
+             ▼
+┌──────────────────────────┐
+│   Active Cursor Location │
+│   (Types text instantly) │
+└──────────────────────────┘
+```
+
+---
+
+## 🌐 API Specification (For Custom Clients)
+
+You can send standard OpenAI-format completions payloads to integrate your own scanner app:
 
 ### Health Check
-`GET /health`
-Returns the status, port, selected provider, model, mode, and host platform.
+`GET /health`  
+Returns metadata on server status, port, active provider, model, and host OS.
 
-### OCR Completions Endpoint
-`POST /v1/chat/completions`  
-`POST /chat/completions`
-
-Accepts standard OpenAI chat completions format. Send the base64 image data inside the `image_url` property of the user messages content:
+### Chat Completions
+`POST /v1/chat/completions` or `POST /chat/completions`
 ```json
 {
   "model": "gpt-4o",
@@ -151,7 +160,7 @@ Accepts standard OpenAI chat completions format. Send the base64 image data insi
       "content": [
         {
           "type": "text",
-          "text": "Parse this table"
+          "text": "Convert this table to Markdown"
         },
         {
           "type": "image_url",
@@ -168,13 +177,26 @@ Accepts standard OpenAI chat completions format. Send the base64 image data insi
 
 ---
 
-## 🛠️ Development & Packaging
+## 💡 Frequently Asked Search Queries (FAQ & Use Cases)
 
-### Prerequisites
-* Node.js 18+
-* VSCode 1.80.0+
+#### Q: How do I convert a blurry screenshot of code into actual text?
+**A:** Open VSCode, select the **OCR for ALL** command, and pick your screenshot. The AI will look at your active file context, intelligently correct any fuzzy characters (like confusing `1` and `l` or `0` and `O`), match your current language syntax, and type it in.
 
-### Build & Package
+#### Q: Can I copy equations from a textbook scan directly into LaTeX?
+**A:** Yes! Select `LATEX` mode in the sidebar, capture the equation image, and OCR for ALL will output structured, compile-ready LaTeX math code.
+
+#### Q: How do I export table images into VSCode markdown files?
+**A:** Set the default OCR mode to `TABLE`. Once you capture or select the table image, the AI parses all columns and rows and constructs a clean, formatted Markdown table instantly.
+
+#### Q: Does my API key leave my machine?
+**A:** No. All API calls to Gemini, Claude, or OpenAI are executed directly from your local VSCode instance to the respective LLM servers. Your API key is stored securely in your local VSCode configuration.
+
+---
+
+## 🛠️ Contributing & Local Development
+
+We welcome pull requests and feature suggestions!
+
 ```bash
 # Clone the repository
 git clone https://github.com/vajrainternationalexports-byte/OCR.git
@@ -183,32 +205,14 @@ cd OCR
 # Install dependencies
 npm install
 
-# Compile the typescript code
+# Compile the project
 npm run compile
 
-# Package extension into .vsix for Open VSX / VSCode Marketplace
+# Package the extension locally
 npx vsce package
 ```
-
-### Publish to Open VSX
-Publishing is fully automated via GitHub Actions. Simply push a version tag:
-```bash
-# Bump version in package.json first, then:
-git tag v1.0.1
-git push origin v1.0.1
-```
-The GitHub Actions workflow will automatically build, package, and publish the new version to the Open VSX Registry.
-
----
-
-## 📝 Commands
-
-Access commands via Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`):
-* `OCR for ALL: Start Server` - Start the local OCR proxy server
-* `OCR for ALL: Stop Server` - Stop the local OCR proxy server
-* `OCR for ALL: Run OCR on File...` - Pick a file from disk to run OCR directly
 
 ---
 
 ## 📄 License
-Licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).

@@ -1,31 +1,44 @@
 {
   "name": "ocr-for-all",
-  "displayName": "OCR for ALL",
-  "description": "Ultra High Enrichment OCR: Image → Text | PDF → Text | Handwritten → Text | Blurry/Hazy → Text. Powered by Gemini, Claude, OpenAI. Works on any document, scan, photo, or PDF — directly inside VSCode.",
+  "displayName": "OCR for ALL: AI Image to Text, PDF, LaTeX Math, Table & Invoice Parser",
+  "description": "Ultra-high accuracy AI OCR. Convert images, screenshots, scans, handwritten notes, LaTeX math formulas, tables, and PDFs to clean Markdown, LaTeX, or JSON directly in VSCode using Gemini, Claude & GPT-4o.",
   "version": "1.0.2",
   "publisher": "ocr-for-all",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anjanagarwal/ocr-for-all.git"
+    "url": "https://github.com/vajrainternationalexports-byte/OCR.git"
   },
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
-    "Other",
-    "Visualization",
-    "Formatters"
+    "Formatters",
+    "Data Science",
+    "Education",
+    "Other"
   ],
   "keywords": [
     "ocr",
-    "latex",
+    "image-to-text",
+    "pdf-to-text",
+    "latex-math",
+    "invoice-parser",
+    "ai-ocr",
     "gemini",
-    "openai",
-    "invoice",
-    "pdf"
+    "claude",
+    "gpt-4o",
+    "screenshot-ocr",
+    "handwriting-ocr",
+    "table-extractor"
   ],
   "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:ocr-for-all.startServer",
+    "onCommand:ocr-for-all.stopServer",
+    "onCommand:ocr-for-all.runOcrOnFile",
+    "onView:ocr-for-all-sidebar"
+  ],
   "contributes": {
     "viewsContainers": {
       "activitybar": [
