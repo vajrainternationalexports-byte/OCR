@@ -1,0 +1,10 @@
+{
+  "extension.title": "OCR for ALL",
+  "extension.description": "Universal OCR Assistant",
+  "server.started": "OCR Proxy Server started successfully on port {0}.",
+  "server.stopped": "OCR Proxy Server stopped.",
+  "server.error": "OCR Server encountered an error: {0}",
+  "ocr.started": "Processing OCR for file {0}...",
+  "ocr.success": "OCR processing complete. Inserted text in editor.",
+  "ocr.error": "OCR failed: {0}"
+}
