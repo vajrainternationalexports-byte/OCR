@@ -159,8 +159,9 @@ Accepts standard OpenAI chat completions format. Send the base64 image data insi
 
 ### Build & Package
 ```bash
-# Clone the repository and navigate
-cd /Users/anjanagarwal/Desktop/Extension
+# Clone the repository
+git clone https://github.com/vajrainternationalexports-byte/OCR.git
+cd OCR
 
 # Install dependencies
 npm install
@@ -173,10 +174,13 @@ npx vsce package
 ```
 
 ### Publish to Open VSX
+Publishing is fully automated via GitHub Actions. Simply push a version tag:
 ```bash
-# Login/Publish using ovsx CLI
-npx ovsx publish ocr-for-all-1.0.0.vsix -p <your-open-vsx-access-token>
+# Bump version in package.json first, then:
+git tag v1.0.1
+git push origin v1.0.1
 ```
+The GitHub Actions workflow will automatically build, package, and publish the new version to the Open VSX Registry.
 
 ---
 
