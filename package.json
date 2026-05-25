@@ -2,12 +2,13 @@
   "name": "ocr-for-all",
   "displayName": "OCR for ALL",
   "description": "Universal OCR assistant: converts handwritten math to LaTeX, poor/hazy images or PDFs to clean text, tables to Markdown, or invoices to structured validated JSON using Gemini, Claude, and OpenAI.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "ocr-for-all",
   "repository": {
     "type": "git",
     "url": "https://github.com/anjanagarwal/ocr-for-all.git"
   },
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
