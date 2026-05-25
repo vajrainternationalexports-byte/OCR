@@ -1,8 +1,8 @@
 {
   "name": "ocr-for-all",
   "displayName": "OCR for ALL",
-  "description": "Universal OCR assistant: converts handwritten math to LaTeX, poor/hazy images or PDFs to clean text, tables to Markdown, or invoices to structured validated JSON using Gemini, Claude, and OpenAI.",
-  "version": "1.0.1",
+  "description": "Ultra High Enrichment OCR: Image → Text | PDF → Text | Handwritten → Text | Blurry/Hazy → Text. Powered by Gemini, Claude, OpenAI. Works on any document, scan, photo, or PDF — directly inside VSCode.",
+  "version": "1.0.2",
   "publisher": "ocr-for-all",
   "repository": {
     "type": "git",

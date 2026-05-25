@@ -1,8 +1,25 @@
 # OCR for ALL
 
-Universal OCR Assistant for Visual Studio Code and Open VSX.
+> **Ultra High Enrichment OCR — Powered by Gemini · Claude · OpenAI**
 
-**OCR for ALL** is a VSCode extension that integrates advanced vision models (Gemini, Claude, OpenAI, and custom OpenAI-compatible endpoints) to help you convert handwritten notes, math equations, tables, blurry scans, and structured documents (invoices, receipts, POs) directly into your editor, all while maintaining active document context to achieve 150% accuracy.
+**OCR for ALL** is a VSCode extension that turns *any* visual document into clean, structured text — directly inside your editor.
+
+---
+
+## 🚀 What It Does
+
+| Input | Output |
+|---|---|
+| 🖼️ **Image to Text** | Any photo, screenshot, or scanned image → clean plain text |
+| 📄 **PDF to Text** | Multi-page PDFs → structured text or Markdown |
+| ✍️ **Handwritten to Text** | Handwritten notes, forms, math equations → digital text / LaTeX |
+| 🌫️ **Blurry / Hazy Image to Text** | Low-quality, overexposed, faded, or noisy scans → enriched clean text |
+
+> 💎 **Ultra High Enrichment** — AI vision models don't just read pixels; they reason about context, correct ambiguities, validate numbers, and produce output that is *richer and more accurate* than the original document.
+
+---
+
+**OCR for ALL** integrates advanced vision models (Gemini, Claude, OpenAI, and custom OpenAI-compatible endpoints) to help you convert handwritten notes, math equations, tables, blurry scans, and structured documents (invoices, receipts, POs) directly into your editor, all while maintaining active document context to achieve 150%+ accuracy.
 
 It is designed to run completely standalone inside VSCode, or as a local network proxy server so external OCR clients (iPad, Android tablets, mobile apps, scanner rigs) can send images over the local network and have text auto-inserted right at your active cursor.
 
